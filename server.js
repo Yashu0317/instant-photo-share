@@ -448,13 +448,37 @@ app.get('/api/events/:eventCode/download-all', (req, res) => {
   archive.finalize();
 });
 
-faceRec.loadModels()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Instant Photo Share running at ${BASE_URL}`);
-    });
-  })
-  .catch(err => {
-    console.error('Failed to load face recognition models:', err);
-    process.exit(1);
+
+let faceModelsReady = false;
+
+// Health check for Render
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    faceModelsReady
   });
+});
+
+// Start Express immediately
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Instant Photo Share running on port ${PORT}`);
+  console.log(`Public URL: ${BASE_URL}`);
+
+  // Load face recognition models in the background
+  faceRec.loadModels()
+    .then(() => {
+      faceModelsReady = true;
+      console.log('Face recognition models loaded successfully.');
+    })
+    .catch(err => {
+      console.error('Face recognition model loading failed:', err);
+      console.error(err.stack);
+      console.log('Website will continue running without face recognition.');
+    });
+});
+
+// Handle unexpected server errors
+server.on('error', (err) => {
+  console.error('Server startup error:', err);
+  process.exit(1);
+});
