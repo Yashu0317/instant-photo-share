@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Instant Photo Share</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+
+  <div class="filmstrip filmstrip--top" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar__mark">
+      <span class="topbar__aperture" aria-hidden="true"></span>
+      <h1 class="topbar__title">Admin Panel</h1>
+    </div>
+    <a href="index.html" class="link-back">
+      <span aria-hidden="true">&larr;</span> Home
+    </a>
+  </header>
+
+  <main class="admin">
+
+    <section class="card admin-card">
+      <span class="admin-card__eyebrow">STEP 01</span>
+      <h2>Create Event</h2>
+      <p class="admin-card__hint">Set this up once — you&rsquo;ll get a QR code guests can scan all night.</p>
+      <form id="eventForm">
+        <label class="field">
+          <span class="field__label">Event name</span>
+          <input type="text" id="eventName" placeholder="Priya &amp; Arjun&rsquo;s Wedding" required>
+        </label>
+        <label class="field">
+          <span class="field__label">Event code <em>(used in the link, no spaces)</em></span>
+          <input type="text" id="eventCode" placeholder="priya-arjun-2026" required>
+        </label>
+        <label class="field">
+          <span class="field__label">Event date</span>
+          <input type="date" id="eventDate">
+        </label>
+        <button type="submit" class="btn">Create Event &amp; Generate QR</button>
+      </form>
+      <div id="eventResult" class="result-slot"></div>
+    </section>
+
+    <section class="card admin-card">
+      <span class="admin-card__eyebrow">STEP 02</span>
+      <h2>Upload Photos</h2>
+      <p class="admin-card__hint">Add shots as they come in — guests see new photos the moment they land.</p>
+      <form id="uploadForm">
+        <label class="field">
+          <span class="field__label">Event code</span>
+          <input type="text" id="uploadEventCode" placeholder="priya-arjun-2026" required>
+        </label>
+        <label class="field">
+          <span class="field__label">Category</span>
+          <select id="category">
+            <option value="candid">Candid</option>
+            <option value="professional">Professional</option>
+          </select>
+        </label>
+        <label class="field field--file">
+          <span class="field__label">Photos</span>
+          <input type="file" id="photos" multiple accept="image/*" required>
+        </label>
+        <button type="submit" class="btn">Upload</button>
+      </form>
+      <div id="uploadResult" class="result-slot"></div>
+    </section>
+
+    <section class="card admin-card admin-card--wide">
+      <span class="admin-card__eyebrow">LIVE</span>
+      <h2>All Events</h2>
+      <p class="admin-card__hint">Everything you&rsquo;ve created &mdash; edit details, manage photos, or remove an event.</p>
+      <div id="eventsList" class="events-list"></div>
+    </section>
+
+  </main>
+
+  <!-- Edit Event modal -->
+  <div id="editEventModal" class="modal hidden">
+    <div class="modal-box">
+      <button type="button" class="modal-close" id="editEventClose" aria-label="Close">&times;</button>
+      <span class="admin-card__eyebrow">EDIT EVENT</span>
+      <h2>Update Details</h2>
+      <form id="editEventForm">
+        <input type="hidden" id="editEventCode">
+        <label class="field">
+          <span class="field__label">Event name</span>
+          <input type="text" id="editEventName" required>
+        </label>
+        <label class="field">
+          <span class="field__label">Event date</span>
+          <input type="date" id="editEventDate">
+        </label>
+        <button type="submit" class="btn">Save Changes</button>
+      </form>
+      <div id="editEventResult" class="result-slot"></div>
+    </div>
+  </div>
+
+  <!-- Manage Photos modal -->
+  <div id="managePhotosModal" class="modal hidden">
+    <div class="modal-box modal-box--wide">
+      <button type="button" class="modal-close" id="managePhotosClose" aria-label="Close">&times;</button>
+      <span class="admin-card__eyebrow">MANAGE PHOTOS</span>
+      <h2 id="managePhotosTitle">Photos</h2>
+      <p class="admin-card__hint">Change a photo&rsquo;s category or remove it entirely.</p>
+      <div id="managePhotosGrid" class="manage-photos-grid"></div>
+    </div>
+  </div>
+
+  <div class="filmstrip filmstrip--bottom" aria-hidden="true"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Event Photo Share</title>
+<meta name="description" content="Scan a QR code, view your event photos instantly, no app required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="filmstrip filmstrip--top" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar__mark">
+      <span class="topbar__aperture" aria-hidden="true"></span>
+      <span class="topbar__wordmark">Instant Event Photo Share</span>
+    </div>
+    <div class="topbar__eyebrow">No app &nbsp;·&nbsp; No sign&#8209;up &nbsp;·&nbsp; Just the photos</div>
+  </header>
+
+  <main class="hero">
+    <div class="iris" aria-hidden="true">
+      <span class="blade" style="--i:0"></span>
+      <span class="blade" style="--i:1"></span>
+      <span class="blade" style="--i:2"></span>
+      <span class="blade" style="--i:3"></span>
+      <span class="blade" style="--i:4"></span>
+      <span class="blade" style="--i:5"></span>
+      <span class="blade" style="--i:6"></span>
+      <span class="blade" style="--i:7"></span>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__title-line">Every Shot,</span>
+        <span class="hero__title-line hero__title-line--accent">Shared Instantly</span>
+      </h1>
+      <p class="hero__sub">Point your camera at the QR code at the event. The gallery opens right in your browser &mdash; nothing to install, nothing to sign up for.</p>
+      <div class="hero__meta">MODE&nbsp;AUTO &nbsp;&middot;&nbsp; ƒ/2.8 &nbsp;&middot;&nbsp; SHARE&nbsp;INSTANT</div>
+    </div>
+  </main>
+
+  <section class="sheet" aria-label="Choose your role">
+
+    <article class="frame frame--guest">
+      <span class="frame__tag">FRAME&nbsp;01 &mdash; GUEST</span>
+      <div class="frame__glass">
+        <div class="scan-ring"></div>
+        <svg class="frame__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="6" width="30" height="52" rx="5" stroke="currentColor" stroke-width="2.4"/>
+          <line x1="14" y1="46" x2="44" y2="46" stroke="currentColor" stroke-width="2"/>
+          <rect x="21" y="16" width="9" height="9" stroke="currentColor" stroke-width="2"/>
+          <rect x="34" y="16" width="9" height="9" stroke="currentColor" stroke-width="2"/>
+          <rect x="21" y="29" width="9" height="9" stroke="currentColor" stroke-width="2"/>
+          <rect x="24" y="19" width="3" height="3" fill="currentColor"/>
+          <rect x="37" y="19" width="3" height="3" fill="currentColor"/>
+          <rect x="24" y="32" width="3" height="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2>I&rsquo;m a Guest</h2>
+      <p>Scan the QR code at the event with your phone&rsquo;s camera. It&rsquo;ll open the gallery automatically.</p>
+    </article>
+
+    <article class="frame frame--host">
+      <span class="frame__tag">FRAME&nbsp;02 &mdash; PHOTOGRAPHER / ORGANIZER</span>
+      <div class="frame__glass">
+        <svg class="frame__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 20a4 4 0 0 1 4-4h6l3-5h14l3 5h6a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V20z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <circle cx="32" cy="34" r="10" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="32" cy="34" r="4" fill="currentColor"/>
+          <circle cx="46" cy="19" r="1.6" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2>I&rsquo;m the Photographer / Organizer</h2>
+      <p>Create an event, upload photos, and get a QR code to display or print.</p>
+      <a class="shutter-btn" href="admin.html">
+        <span class="shutter-btn__ring">
+          <span class="shutter-btn__blade"></span>
+          <span class="shutter-btn__blade"></span>
+          <span class="shutter-btn__blade"></span>
+          <span class="shutter-btn__blade"></span>
+          <span class="shutter-btn__blade"></span>
+          <span class="shutter-btn__blade"></span>
+        </span>
+        <span class="shutter-btn__label">Go to Admin Panel</span>
+      </a>
+    </article>
+
+  </section>
+
+  <footer class="footer">
+    <span>BUILT FOR THE MOMENT</span>
+    <span class="footer__dot">&middot;</span>
+    <span>ONE SCAN, EVERY PHOTO</span>
+  </footer>
+
+  <div class="filmstrip filmstrip--bottom" aria-hidden="true"></div>
+
+  <script>
+    // Retire the iris overlay from the layout once its reveal animation finishes,
+    // so it never intercepts clicks/taps and costs nothing at rest.
+    var iris = document.querySelector('.iris');
+    if (iris) {
+      window.setTimeout(function () {
+        iris.style.display = 'none';
+      }, 1400);
+    }
+  </script>
+</body>
+</html>

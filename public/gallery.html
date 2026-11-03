@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="gallery-page">
+
+  <div class="garland" aria-hidden="true"></div>
+  <div class="petals" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="topbar gallery-topbar">
+    <h1 id="eventName">Loading event…</h1>
+    <p id="eventDate"></p>
+  </header>
+
+  <!-- Find My Photos: guest scans their own face to see only photos they're in -->
+  <div class="face-match-bar">
+    <button id="findMeBtn" class="btn face-btn">🤳 Find My Photos</button>
+    <span id="matchStatus" class="match-status"></span>
+  </div>
+
+  <div id="cameraModal" class="camera-modal hidden">
+    <div class="camera-box">
+      <video id="cameraVideo" autoplay playsinline muted></video>
+      <canvas id="cameraCanvas" class="hidden"></canvas>
+      <p class="camera-hint">Center your face, good lighting helps. Selfies are not saved.</p>
+      <div class="camera-actions">
+        <button id="captureBtn" class="btn">📸 Capture</button>
+        <button id="cameraCancelBtn" class="btn secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Photos</button>
+    <button class="filter-btn" data-filter="professional">Professional</button>
+    <button class="filter-btn" data-filter="candid">Candid</button>
+    <button id="downloadAllBtn" class="btn small">⬇ Download All</button>
+  </div>
+
+  <main id="gallery" class="gallery"></main>
+
+  <!-- Lightbox for full-size preview -->
+  <div id="lightbox" class="lightbox hidden">
+    <button id="lightboxClose" class="lightbox-close">✕</button>
+    <img id="lightboxImg" src="" alt="Full size photo">
+    <a id="lightboxDownload" class="btn" download>⬇ Download</a>
+  </div>
+
+  <script src="js/gallery.js"></script>
+</body>
+</html>
